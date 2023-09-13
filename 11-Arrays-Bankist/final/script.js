@@ -76,9 +76,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -139,9 +138,11 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
-
+//NOTE: login 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
+  //NOTE: preventDefault method is for page to not reload
+  //NOTE: The e parameter inside the function represents the event object that is automatically passed to the callback function by the event listener when the event (in this case, a click event) occurs. This event object contains information about the event, such as its type, target element, and any relevant data associated with the event.
   e.preventDefault();
 
   currentAccount = accounts.find(
@@ -151,9 +152,8 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -165,6 +165,7 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
+//transfer money
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);

@@ -123,9 +123,8 @@ const displayMovements = function (acc, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${formattedMov}</div>
       </div>
@@ -233,9 +232,8 @@ btnLogin.addEventListener("click", function (e) {
 
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(" ")[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(" ")[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Create current date and time
@@ -368,7 +366,7 @@ btnSort.addEventListener("click", function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-/*
+
 ///////////////////////////////////////
 // Converting and Checking Numbers
 console.log(23 === 23.0);
@@ -576,8 +574,8 @@ console.log(future);
 
 ///////////////////////////////////////
 // Operations With Dates
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(+future);
+const future2 = new Date(2037, 10, 19, 15, 23);
+console.log(+future2);
 
 const calcDaysPassed = (date1, date2) =>
   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
@@ -588,7 +586,7 @@ console.log(days1);
 
 ///////////////////////////////////////
 // Internationalizing Numbers (Intl)
-const num = 3884764.23;
+const num2 = 3884764.23;
 
 const options = {
   style: 'currency',
@@ -597,12 +595,12 @@ const options = {
   // useGrouping: false,
 };
 
-console.log('US:      ', new Intl.NumberFormat('en-US', options).format(num));
-console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
-console.log('Syria:   ', new Intl.NumberFormat('ar-SY', options).format(num));
+console.log('US:      ', new Intl.NumberFormat('en-US', options).format(num2));
+console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num2));
+console.log('Syria:   ', new Intl.NumberFormat('ar-SY', options).format(num2));
 console.log(
   navigator.language,
-  new Intl.NumberFormat(navigator.language, options).format(num)
+  new Intl.NumberFormat(navigator.language, options).format(num2)
 );
 
 
@@ -625,4 +623,4 @@ setInterval(function () {
   const now = new Date();
   console.log(now);
 }, 1000);
-*/
+
