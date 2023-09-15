@@ -284,6 +284,7 @@ const slider = function () {
     e.key === 'ArrowRight' && nextSlide();
   });
 
+  /*NOTE: even delegation taking action here as any click happen at dots_dot will also availble for parent element dot so we wrote an event For parent element so any click at child will eventually fire the event at parent so it will work.*/
   dotContainer.addEventListener('click', function (e) {
     if (e.target.classList.contains('dots__dot')) {
       const { slide } = e.target.dataset;
