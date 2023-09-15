@@ -39,12 +39,13 @@ document.addEventListener('keydown', function (e) {
 ///////////////////////////////////////
 // Button scrolling
 btnScrollTo.addEventListener('click', function (e) {
+  console.log("Target\n");
   const s1coords = section1.getBoundingClientRect();
   console.log(s1coords);
-
+  console.log("From\n");
   console.log(e.target.getBoundingClientRect());
 
-  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
 
   console.log(
     'height/width viewport',
@@ -58,13 +59,13 @@ btnScrollTo.addEventListener('click', function (e) {
   //   s1coords.top + window.pageYOffset
   // );
 
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
+  window.scrollTo({
+    left: s1coords.left + window.scrollX,
+    top: s1coords.top + window.scrollY,
+    behavior: 'smooth',
+  });
 
-  section1.scrollIntoView({ behavior: 'smooth' });
+  //section1.scrollIntoView({ behavior: 'smooth' });
 });
 
 ///////////////////////////////////////
@@ -141,7 +142,7 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  // console.log(entry);
+  console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
@@ -150,7 +151,7 @@ const stickyNav = function (entries) {
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: `-${navHeight}px`,
+  rootMargin: `${navHeight}px`,
 });
 
 headerObserver.observe(header);
@@ -172,6 +173,9 @@ const sectionObserver = new IntersectionObserver(revealSection, {
   root: null,
   threshold: 0.15,
 });
+/* NOTE: The Intersection Observer API allows you to configure a callback that is called when either of these circumstances occur: 1- A target element intersects either the device's viewport or a specified element. 2-That specified element is called the root element or root for the purposes of the Intersection Observer API. The first time the observer is initially asked to watch a target element. */
+
+//NOTE: A threshold of 1.0 means that when 100% of the target is visible within the element specified by the root option, the callback is invoked.
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
